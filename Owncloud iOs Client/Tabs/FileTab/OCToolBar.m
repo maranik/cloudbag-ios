@@ -41,7 +41,7 @@
         [self manageBackgroundView:NO];
         [self setTintColor:[UIColor colorOfToolBarButtons]];
         //Option for normal tint adjustment.
-        [self setTintAdjustmentMode:UIViewTintAdjustmentModeNormal];
+        //[self setTintAdjustmentMode:UIViewTintAdjustmentModeNormal];
     }
     return self;
     

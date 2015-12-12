@@ -18,15 +18,15 @@
 #define k_year 2015
 
 //URLs Setting
-#define k_help_url @"http://owncloud.com/mobile/help"
-#define k_recomended_url @"http://owncloud.com/mobile/recommend"
-#define k_send_feedback @"http://owncloud.com/mobile/feedback"
+#define k_help_url @"http://tnet.it/contatti"
+#define k_recomended_url @"http://tnet.it/cloud-bag"
+#define k_send_feedback @"http://tnet.it/contatti"
 
 //Hide url server
-#define k_hide_url_server NO
+#define k_hide_url_server YES
 
 //Set a default url server. It must be obligaroy if we hide the url server (#define k_hide_url_server YES)
-#define k_default_url_server @""
+#define k_default_url_server @"https://cloudbag.tnet.it"
 
 //Show multiaccount or disconnect
 #define k_multiaccount_available YES
@@ -51,9 +51,10 @@
 #define k_oauth_client_id @"" //the same in k_oauth_login
 
 //Mail feedback
-#define k_mail_feedback @"apps@owncloud.com"
+#define k_mail_feedback @"support@tnet.it"
 
 //Social
+//FIXME: fix links and twitter user
 #define k_download_url_short @"http://bit.ly/13haDjE"
 #define k_download_url_long @"https://itunes.apple.com/us/app/owncloud/id543672169?mt=8"
 #define k_twitter_user @"@ownCloud"
@@ -83,12 +84,13 @@
 #define k_is_customize_uitabbar YES
 
 //Customize Unselected UITabBarItems (The images of tabBar should be the unseleted tabs)
-#define k_is_customize_unselectedUITabBarItems NO
+#define k_is_customize_unselectedUITabBarItems YES
 
 //Set Image on Preview Bottom toolBar on iPhone
 #define k_set_image_on_preview_bottom_toolBar_on_iPhone NO
 
 //Impressum is a File
+//FIXME: definire link impressum
 #define k_impressum_is_file YES
 
 //Impressum url if is not a file
@@ -128,7 +130,7 @@
 #define k_url_link_on_login @"https://owncloud.com/mobile/new"
 
 //User-Agent
-#define k_user_agent @"Mozilla/5.0 (iOS) ownCloud-iOS/"
+#define k_user_agent @"Mozilla/5.0 (iOS) CloudBag-iOS/"
 
 //Enable/Disable Background uploads and download (NSURLSession or NSOperation)
 #define k_is_background_active YES
