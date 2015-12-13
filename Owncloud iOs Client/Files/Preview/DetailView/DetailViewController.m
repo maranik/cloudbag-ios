@@ -123,8 +123,10 @@ NSString * IpadShowNotConnectionWithServerMessageNotification = @"IpadShowNotCon
     [_titleLabel setText:@""];
     
     //Set color of background
+    self.splitViewController.view.backgroundColor = [UIColor colorOfHeaderTableSectionFileList];
     self.view.backgroundColor = [UIColor colorOfBackgroundDetailViewiPad];
     
+
     //Set notifications for communication betweenViews
     [self setNotificationForCommunicationBetweenViews];
     

@@ -45,17 +45,17 @@
 
 //Tint color of tool bar
 + (UIColor*)colorOfToolBar{
-    return [UIColor colorWithRed:28/255.0f green:44/255.0f blue:67/255.0f alpha:1.0];
+    return [UIColor colorWithRed:0/255.0f green:134/255.0f blue:214/255.0f alpha:0.7];
 }
 
 //Color of background view in toolBar bar, only for iOS 7 for transparency
 + (UIColor*)colorOfBackgroundToolBarImage {
-    return [UIColor colorWithRed:28/255.0f green:44/255.0f blue:67/255.0f alpha:0.7];
+    return [UIColor colorWithRed:0/255.0f green:134/255.0f blue:214/255.0f alpha:0.7];
 }
 
 //Tint color of tool bar buttons
 + (UIColor*)colorOfToolBarButtons {
-    return [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:1.0];
+    return [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:0.7];
     
 }
 

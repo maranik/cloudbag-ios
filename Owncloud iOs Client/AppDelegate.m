@@ -191,10 +191,13 @@ NSString * NotReachableNetworkForDownloadsNotification = @"NotReachableNetworkFo
 -(void)setUINavigationBarApperanceForNativeMail {
     
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorOfNavigationBar]];
-    
+
     [[UINavigationBar appearance] setBackgroundImage:[ImageUtils imageWithColor:[UIColor colorOfNavigationBar]] forBarMetrics:UIBarMetricsDefault];
     
     [[UINavigationBar appearance] setTintColor:[UIColor colorOfNavigationItems]];
+    
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
     
     //Set the title color
     NSShadow *shadow = [[NSShadow alloc] init];
