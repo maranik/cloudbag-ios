@@ -66,6 +66,7 @@
 //Constant for iOS7
 #define k_status_bar_height 20
 #define k_navigation_bar_height 44
+#define k_tab_bar_height 49
 #define k_navigation_bar_height_in_iphone_landscape 32
 #define k_footer_label_width 320
 
@@ -252,7 +253,7 @@
     }
     
     //If is a new user set the file list
-    if (app.isNewUser) {
+    //if (app.isNewUser) {
         //We are changing of user
         //Show the file list in the correct place
         if (!IS_IPHONE){
@@ -262,8 +263,9 @@
         } else {
             [_tableView setContentOffset:CGPointMake(0,-(k_status_bar_height + k_navigation_bar_height)) animated:animated];
         }
+    
         app.isNewUser = NO;
-    }
+    //}
 }
 
 // Notifies the view controller that its view is about to be added to a view hierarchy.
@@ -318,7 +320,7 @@
         //We are changing of user
         //Show the file list in the correct place
         //Only for iOS 7
-        if (IS_IOS7){
+        if (IS_IOS7 || IS_IOS8 || IS_IOS9){
             if (!IS_IPHONE){
                 [_tableView setContentOffset:CGPointMake(0,-k_navigation_bar_height) animated:animated];
             } else if (IS_IPHONE && !IS_PORTRAIT) {
@@ -563,7 +565,7 @@
         
         CGRect rect = self.navigationController.navigationBar.frame;
         float y = rect.size.height + rect.origin.y;
-        self.tableView.contentInset = UIEdgeInsetsMake(y,0,0,0);
+        self.tableView.contentInset = UIEdgeInsetsMake(y,0,k_tab_bar_height,0);
         
         if (self.didLayoutSubviews == false){
             self.didLayoutSubviews = true;
