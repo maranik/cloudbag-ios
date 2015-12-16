@@ -449,7 +449,7 @@
     if (section == sectionToShowFooter) {
         NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
         NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-        label.text = [NSString stringWithFormat:@"%@ %d    iOS %@", appName, k_year, appVersion];
+        label.text = [NSString stringWithFormat:@"%@ v.%@ - %@ ", appName, appVersion, k_brand_owner ];
         label.font = appFont;
         label.textColor = [UIColor grayColor];
         label.backgroundColor = [UIColor clearColor];

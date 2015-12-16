@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Owncloud iOs Client.xcodeproj">
+      location = "self:/Users/maranik/Work/t.net/cloudbag-ios/Owncloud iOs Client.xcodeproj">
    </FileRef>
 </Workspace>

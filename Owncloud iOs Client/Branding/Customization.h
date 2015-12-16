@@ -17,6 +17,8 @@
 //app year
 #define k_year 2015
 
+#define k_brand_owner @"T.net Italia S.p.A."
+
 //URLs Setting
 #define k_help_url @"http://tnet.it/contatti"
 #define k_recomended_url @"http://tnet.it/cloud-bag"
@@ -54,10 +56,9 @@
 #define k_mail_feedback @"support@tnet.it"
 
 //Social
-//FIXME: fix links and twitter user
-#define k_download_url_short @"http://bit.ly/13haDjE"
-#define k_download_url_long @"https://itunes.apple.com/us/app/owncloud/id543672169?mt=8"
-#define k_twitter_user @"@ownCloud"
+#define k_download_url_short @"http://apple.co/1UzFdyn"
+#define k_download_url_long @"https://itunes.apple.com/it/app/cloudbag/id1068531764?mt=8"
+#define k_twitter_user @"@Tnet_Italia"
 
 //Minimun files until show letters on separators
 #define k_minimun_files_to_show_separators 20
@@ -90,7 +91,6 @@
 #define k_set_image_on_preview_bottom_toolBar_on_iPhone NO
 
 //Impressum is a File
-//FIXME: definire link impressum
 #define k_impressum_is_file YES
 
 //Impressum url if is not a file

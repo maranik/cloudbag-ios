@@ -64,7 +64,7 @@
 
 //Tint color of tab bar
 + (UIColor*)colorOfTintUITabBar {
-    return [UIColor colorWithRed:200/255.0f green:200/255.0f blue:200/255.0f alpha:1.0];
+    return [UIColor colorWithRed:218/255.0f green:218/255.0f blue:218/255.0f alpha:1.0];
 }
 
 //Tint color for selected tab bar item
@@ -74,7 +74,7 @@
 
 //Tint color for non selected tab bar item (only works with the labels)
 + (UIColor*)colorOfTintNonSelectedUITabBar {
-   return [UIColor colorWithRed:200/255.0f green:200/255.0f blue:200/255.0f alpha:1.0];
+   return [UIColor colorWithRed:218/255.0f green:218/255.0f blue:218/255.0f alpha:1.0];
 }
 
 
