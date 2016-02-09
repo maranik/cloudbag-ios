@@ -20,9 +20,11 @@
 #define k_brand_owner @"T.net Italia S.p.A."
 
 //URLs Setting
-#define k_help_url @"http://tnet.it/contatti"
+#define k_help_url @"http://www.tnet.it/cloudbag-faq"
 #define k_recomended_url @"http://tnet.it/cloud-bag"
 #define k_send_feedback @"http://tnet.it/contatti"
+#define k_about_url @"http://www.tnet.it/chi-siamo-app"
+#define k_upgrade_url @"http://portal.tnet.it/clientarea.php"
 
 //Hide url server
 #define k_hide_url_server YES
@@ -76,7 +78,7 @@
 #define k_show_feedback_option_on_settings YES
 
 //Show impressum
-#define k_show_imprint_option_on_settings NO
+#define k_show_imprint_option_on_settings YES
 
 //Buy more storage company name
 #define k_company_name_buy_more_storage @""
@@ -91,10 +93,10 @@
 #define k_set_image_on_preview_bottom_toolBar_on_iPhone NO
 
 //Impressum is a File
-#define k_impressum_is_file YES
+#define k_impressum_is_file NO
 
 //Impressum url if is not a file
-#define k_impressum_url @""
+#define k_impressum_url @"http://tnet.it/privacy-policy"
 
 //Customize recomend mail
 #define k_is_custom_recommend_mail NO
@@ -109,10 +111,10 @@
 #define k_is_image_background_preview_bottom_bar NO
 
 //Social customize
-#define k_is_custom_twitter NO
-#define k_custom_twitter_message @""
-#define k_is_custom_facebook NO
-#define k_custom_facebook_message @""
+#define k_is_custom_twitter YES
+#define k_custom_twitter_message @"Prova subito CloudBag (http://bit.ly/1J6ogdI), il cloud storage che ti offre 10GB gratis su server italiani! Segui @Tnet_Italia #cloudbag"
+#define k_is_custom_facebook YES
+#define k_custom_facebook_message @"Prova subito CloudBag (http://bit.ly/1J6ogdI), il cloud storage che ti offre 10GB gratis su server italiani! Segui @Tnet_Italia #cloudbag"
 
 //Autocomplete Login
 #define k_is_autocomplete_username_necessary NO
@@ -126,8 +128,8 @@
 #define k_is_text_status_bar_white NO
 
 //Show the help link on login
-#define k_is_shown_help_link_on_login NO
-#define k_url_link_on_login @"https://owncloud.com/mobile/new"
+#define k_is_shown_help_link_on_login YES
+#define k_url_link_on_login @"http://portal.tnet.it/cart.php?a=add&pid=81"
 
 //User-Agent
 #define k_user_agent @"Mozilla/5.0 (iOS) CloudBag-iOS/"

@@ -44,6 +44,7 @@
 //Settings table view size separator
 #define k_padding_normal_section 20.0
 #define k_padding_under_section 5.0
+#define k_tab_bar_height 49
 
 //Settings custom font
 #define k_settings_normal_font [UIFont fontWithName:@"HelveticaNeue" size:17]
@@ -168,8 +169,9 @@
         
         CGRect rect = self.navigationController.navigationBar.frame;
         float y = rect.size.height + rect.origin.y;
-        self.settingsTableView.contentInset = UIEdgeInsetsMake(y,0,0,0);
-        
+        self.settingsTableView.contentInset = UIEdgeInsetsMake(y,0,k_tab_bar_height,0);
+        self.settingsTableView.contentOffset = CGPointMake(0, 0 - self.settingsTableView.contentInset.top);
+
     }
     
 }
@@ -289,6 +291,8 @@
     }
 }
 
+
+
 #pragma mark - UITableView datasource
 
 // Asks the data source to return the number of sections in the table view.
@@ -344,6 +348,7 @@
                 if (k_show_imprint_option_on_settings) {
                     n = n + 1;
                 }
+                n = n + 2;
             }
 
             break;
@@ -364,6 +369,7 @@
                 if (k_show_imprint_option_on_settings) {
                     n = n + 1;
                 }
+                n = n + 2;
             }
             break;
             
@@ -601,7 +607,12 @@
         case 3:
             [self setTitleOfRow:impress inCell:cell];
             break;
-            
+        case 4:
+            [self setTitleOfRow:about inCell:cell];
+            break;
+        case 5:
+            [self setTitleOfRow:upgrade inCell:cell];
+            break;
         default:
             break;
     }
@@ -656,6 +667,24 @@
         case impress:
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             cell.textLabel.text = NSLocalizedString(@"imprint_button", nil);
+            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            
+            //Add accesibility label for Automation
+            cell.accessibilityLabel = ACS_SETTINGS_IMPRESS_CELL;
+            break;
+            
+        case about:
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            cell.textLabel.text = NSLocalizedString(@"about_button", nil);
+            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            
+            //Add accesibility label for Automation
+            cell.accessibilityLabel = ACS_SETTINGS_IMPRESS_CELL;
+            break;
+            
+        case upgrade:
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            cell.textLabel.text = NSLocalizedString(@"upgrade_button", nil);
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             
             //Add accesibility label for Automation
@@ -1041,6 +1070,12 @@
         case 3:
             [self setContentOfRow:impress];
             break;
+        case 4:
+            [self setContentOfRow:about];
+            break;
+        case 5:
+            [self setContentOfRow:upgrade];
+            break;
         default:
             break;
     }
@@ -1120,6 +1155,44 @@
             break;
         case impress:
             [self goImprint];
+            break;
+        case about:
+            DLog(@"1-Press About");
+            if (IS_IPHONE) {
+                WebViewController *webView = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
+                
+                webView.urlString = k_about_url;
+                webView.navigationTitleString = NSLocalizedString(@"about_button", nil);
+                
+                [self.navigationController pushViewController:webView animated:YES];
+                
+            } else {
+                if(!_detailViewController) {
+                    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+                    self.detailViewController = app.detailViewController;
+                }
+                [self.detailViewController openLink:k_about_url];
+                self.detailViewController.linkTitle=NSLocalizedString(@"about_button", nil);
+            }
+            break;
+        case upgrade:
+            DLog(@"1-Press Upgrade");
+            if (IS_IPHONE) {
+                WebViewController *webView = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
+                
+                webView.urlString = k_upgrade_url;
+                webView.navigationTitleString = NSLocalizedString(@"upgrade_button", nil);
+                
+                [self.navigationController pushViewController:webView animated:YES];
+                
+            } else {
+                if(!_detailViewController) {
+                    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+                    self.detailViewController = app.detailViewController;
+                }
+                [self.detailViewController openLink:k_upgrade_url];
+                self.detailViewController.linkTitle=NSLocalizedString(@"upgrade_button", nil);
+            }
             break;
         default:
             break;
@@ -1400,7 +1473,7 @@
         }
         
         // Add an image to the publish
-        [self.twitter addImage:[UIImage imageNamed:@"CompanyLogo.png"]];
+        //[self.twitter addImage:[UIImage imageNamed:@"CompanyLogo.png"]];
         
         [self.twitter setCompletionHandler:completionHandler];
         
@@ -1541,7 +1614,7 @@
             }
         } else {
             
-            NSString *emailBody = [NSString stringWithFormat: @"%@\r\n%@",[NSLocalizedString(@"mail_recommendation_body", nil) stringByReplacingOccurrencesOfString:@"$appname" withString:appName],k_download_url_long];
+            NSString *emailBody = [NSString stringWithFormat: @"%@\r\n",[NSLocalizedString(@"mail_recommendation_body", nil) stringByReplacingOccurrencesOfString:@"$appname" withString:appName]];
             [self.mailer setMessageBody:emailBody isHTML:NO];
         }
         
