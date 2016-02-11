@@ -23,7 +23,7 @@
 #define k_help_url @"http://www.tnet.it/cloudbag-faq"
 #define k_recomended_url @"http://tnet.it/cloud-bag"
 #define k_send_feedback @"http://tnet.it/contatti"
-#define k_about_url @"http://www.tnet.it/chi-siamo-app"
+#define k_about_url @"http://www.tnet.it/chi-siamo"
 #define k_upgrade_url @"http://portal.tnet.it/clientarea.php"
 
 //Hide url server
