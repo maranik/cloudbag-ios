@@ -48,6 +48,7 @@
 #define k_padding_normal_section 20.0
 #define k_padding_last_section 40.0
 #define k_padding_under_section 5.0
+#define k_tab_bar_height 49
 
 //Settings custom font
 #define k_settings_normal_font [UIFont fontWithName:@"HelveticaNeue" size:17]
@@ -299,6 +300,7 @@
             navBar.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
             navBar.modalPresentationStyle = UIModalPresentationFormSheet;
         }
+
         [self presentViewController:navBar animated:YES completion:nil];
     } else {
         if (IS_IPHONE) {
@@ -379,6 +381,7 @@
             if (k_show_imprint_option_on_settings) {
                 n = n + 1;
             }
+            n = n + 2;
             break;
             
         default:
@@ -441,9 +444,7 @@
     if (section == sectionToShowFooter) {
         NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
         NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-        NSString *lastGitCommit = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"LastGitCommit"];
-        label.text = [NSString stringWithFormat:@"%@ %d    iOS %@ (%@)", appName, k_year, appVersion, lastGitCommit];
-        label.font = appFont;
+        label.text = [NSString stringWithFormat:@"%@ v.%@ - %@ ", appName, appVersion, k_brand_owner ];        label.font = appFont;
         label.textColor = [UIColor grayColor];
         label.backgroundColor = [UIColor clearColor];
         label.textAlignment = NSTextAlignmentCenter;
@@ -585,6 +586,14 @@
             [self setTitleOfRow:impress inCell:cell];
             break;
             
+        case 4:
+            [self setTitleOfRow:about inCell:cell];
+            break;
+        
+        case 5:
+            [self setTitleOfRow:upgrade inCell:cell];
+            break;
+            
         default:
             break;
     }
@@ -642,6 +651,24 @@
             cell.textLabel.text = NSLocalizedString(@"imprint_button", nil);
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             
+            //Add accesibility label for Automation
+            cell.accessibilityLabel = ACS_SETTINGS_IMPRESS_CELL;
+            break;
+            
+        case about:
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            cell.textLabel.text = NSLocalizedString(@"about_button", nil);
+            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            
+            //Add accesibility label for Automation
+            cell.accessibilityLabel = ACS_SETTINGS_IMPRESS_CELL;
+            break;
+
+        case upgrade:
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            cell.textLabel.text = NSLocalizedString(@"upgrade_button", nil);
+            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+
             //Add accesibility label for Automation
             cell.accessibilityLabel = ACS_SETTINGS_IMPRESS_CELL;
             break;
@@ -943,6 +970,12 @@
         case 3:
             [self setContentOfRow:impress];
             break;
+        case 4:
+            [self setContentOfRow:about];
+            break;
+        case 5:
+            [self setContentOfRow:upgrade];
+            break;
         default:
             break;
     }
@@ -1024,6 +1057,45 @@
             break;
         case impress:
             [self goImprint];
+            break;
+        case about:
+            DLog(@"1-Press About");
+            
+            if (IS_IPHONE) {
+                WebViewController *webView=[[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
+                
+                webView.urlString = k_about_url;
+                webView.navigationTitleString = NSLocalizedString(@"about_button", nil);
+                
+                [self.navigationController pushViewController:webView animated:NO];
+                
+            } else {
+                if(!_detailViewController) {
+                    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+                    _detailViewController = app.detailViewController;
+                }
+                [_detailViewController openLink:k_about_url];
+                _detailViewController.linkTitle=NSLocalizedString(@"about_button", nil);
+            }
+            break;
+        case upgrade:
+            DLog(@"1-Press Upgrade");
+            if (IS_IPHONE) {
+                WebViewController *webView = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
+                
+                webView.urlString = k_upgrade_url;
+                webView.navigationTitleString = NSLocalizedString(@"upgrade_button", nil);
+                
+                [self.navigationController pushViewController:webView animated:NO];
+                
+            } else {
+                if(!_detailViewController) {
+                    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+                    self.detailViewController = app.detailViewController;
+                }
+                [self.detailViewController openLink:k_upgrade_url];
+                self.detailViewController.linkTitle=NSLocalizedString(@"upgrade_button", nil);
+            }
             break;
         default:
             break;
@@ -1334,7 +1406,7 @@
         }
         
         // Add an image to the publish
-        [self.twitter addImage:[UIImage imageNamed:@"CompanyLogo.png"]];
+        //[self.twitter addImage:[UIImage imageNamed:@"CompanyLogo.png"]];
         
         [self.twitter setCompletionHandler:completionHandler];
         
@@ -1475,7 +1547,7 @@
             }
         } else {
             
-            NSString *emailBody = [NSString stringWithFormat: @"%@\r\n%@",[NSLocalizedString(@"mail_recommendation_body", nil) stringByReplacingOccurrencesOfString:@"$appname" withString:appName],k_download_url_long];
+            NSString *emailBody = [NSString stringWithFormat: @"%@\r\n",[NSLocalizedString(@"mail_recommendation_body", nil) stringByReplacingOccurrencesOfString:@"$appname" withString:appName]];
             [self.mailer setMessageBody:emailBody isHTML:NO];
         }
         

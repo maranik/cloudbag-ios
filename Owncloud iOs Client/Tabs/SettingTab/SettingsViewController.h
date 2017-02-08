@@ -31,6 +31,8 @@ typedef enum {
     recommend = 1,
     feedback = 2,
     impress = 3,
+    about = 4,
+    upgrade = 5
     
 } enumInfoSetting;
 
